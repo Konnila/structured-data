@@ -1,0 +1,48 @@
+(defn spiff [v] (+ (get v 0) (get v 2)))
+(spiff [1 2])
+(spiff [1 2 3])
+(spiff [])
+(defn title-length [book]
+  (count (:title book)))
+(def china {:name "China Miéville", :birth-year 1972})
+(def cities {:title "The City and the City" :authors [china]})
+(title-length cities) 
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def felleisen {:name "Matthias Felleisen"})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(defn author-count [book]
+  (count (:authors book)))
+(defn multiple-authors? [book]
+  (if (> 1 (author-count book)) true false))
+(multiple-authors? little-schemer)
+author-count little-schemer
+(author-count little-schemer)
+(defn stars [n]
+  (apply concat (repeat n "*")))
+stars 5
+repeat 5 "*"
+(repeat 5 "*")
+(apply concat (repeat 5 "*"))
+(defn old-book->new-book [book]
+  (let [authors (get book :authors)] (assoc book :authors (set authors))))
+(defn authors [books]
+  (let [new-books (map old-book->new-book books)] (new-books)))
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors #{china}})
+(def wild-seed {:title "Wild Seed", :authors #{octavia}})
+(def embassytown {:title "Embassytown", :authors #{china}})
+(def little-schemer {:title "The Little Schemer"
+                     :authors #{friedman, felleisen}})
+(def books [cities, wild-seed, embassytown, little-schemer])
+(authors [little-schemer, cities])
+(str "asd" nil)
